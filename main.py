@@ -12,7 +12,7 @@ app.wsgi_app = ProxyFix(
 
 @app.route('/open')
 def open_gate():
-    exitCode = system("exit " + str(randint(0,1)))
+    exitCode = system("exit 0")
     if(exitCode == 0):
         return jsonify({"status": "success"})
     else:
