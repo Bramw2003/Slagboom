@@ -19,6 +19,10 @@
             .green {
                 background-color: #4CAF50;
             }
+
+            .red {
+                background-color: #f44336;
+            }
         </style>
     </head>
     <body>
@@ -31,7 +35,10 @@
                 function(data) {
                     if(data.status == 'success') {
                         $('#open').addClass("green");
+                        $('#open').removeClass("red");
                     } else {
+                        $('#open').addClass("red");
+                        $('#open').removeClass("green");
                         alert('Something went wrong');
                     }
             });
