@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Slagboom</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+        </script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <style>
+            button {
+                top: 2.5%;
+                left: 2.5%;
+                right: 2.5%;
+                bottom: 2.5%;
+                position: fixed;
+                font-size: 150px;
+            }
+
+            .green {
+                background-color: #4CAF50;
+            }
+        </style>
+    </head>
+    <body>
+        <button id="open" name="button">Sesam open</button>
+        <script type=text/javascript>
+        $(function() {
+          $('#open').on('click', function(e) {
+            e.preventDefault()
+            $.getJSON('{{ url }}',
+                function(data) {
+                    if(data.status == 'success') {
+                        $('#open').addClass("green");
+                    } else {
+                        alert('Something went wrong');
+                    }
+            });
+            return false;
+          });
+        });
+        </script>
+    </body>
+</html>
