@@ -1,3 +1,4 @@
+from random import randint
 from werkzeug.middleware.proxy_fix import ProxyFix
 from flask import Flask, request, render_template, url_for, jsonify
 from os import system
@@ -11,7 +12,7 @@ app.wsgi_app = ProxyFix(
 
 @app.route('/open')
 def open_gate():
-    exitCode = system("exit 0")
+    exitCode = system("exit " + str(randint(0,1)))
     if(exitCode == 0):
         return jsonify({"status": "success"})
     else:
