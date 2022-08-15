@@ -12,7 +12,7 @@ app.wsgi_app = ProxyFix(
 
 @app.route('/open')
 def open_gate():
-    exitCode = system("exit 0")
+    exitCode = system("python3 /home/pi/python-host/switchbot_py3.py -d 'id'")
     if(exitCode == 0):
         return jsonify({"status": "success"})
     else:
