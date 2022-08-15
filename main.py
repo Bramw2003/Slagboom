@@ -13,7 +13,7 @@ app.wsgi_app = ProxyFix(
 
 @app.route('/open')
 def open_gate():
-    user = os.popen('whoami').read()
+    user = os.popen("python3 /home/pi/python-host/switchbot_py3.py -d 'id'").read()
     exitCode = system("python3 /home/pi/python-host/switchbot_py3.py -d 'id'")
     if(exitCode == 0):
         return jsonify({"status": "success"})
