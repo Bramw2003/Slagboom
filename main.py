@@ -2,6 +2,7 @@ from random import randint
 from werkzeug.middleware.proxy_fix import ProxyFix
 from flask import Flask, request, render_template, url_for, jsonify
 from os import system
+import os
 
 app = Flask(__name__)
 
@@ -12,11 +13,12 @@ app.wsgi_app = ProxyFix(
 
 @app.route('/open')
 def open_gate():
+    user = os.popen('whoami').read()
     exitCode = system("python3 /home/pi/python-host/switchbot_py3.py -d 'id'")
     if(exitCode == 0):
         return jsonify({"status": "success"})
     else:
-        return jsonify({"status": "something went wrong"})
+        return jsonify({"status": user})
 
 @app.route("/")
 def hello_world():
